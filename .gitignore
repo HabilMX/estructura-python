@@ -1,0 +1,19 @@
+# El entorno virtual: se crea en cada máquina, nunca se sube.
+.venv/
+
+# Lo que deja construir el paquete.
+dist/
+build/
+*.egg-info/
+
+# Cachés de Python y de las herramientas.
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Editores y sistema operativo.
+.idea/
+.vscode/
+.DS_Store

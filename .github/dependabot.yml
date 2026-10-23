@@ -1,0 +1,15 @@
+# Una vez al mes, Dependabot propone actualizar las acciones del CI. También
+# revisa pyproject.toml; las herramientas de desarrollo viven en
+# [dependency-groups] (PEP 735), que la documentación de GitHub todavía no
+# menciona: si Dependabot propone subirlas, bien, pero no está comprobado aquí.
+# El paquete no tiene dependencias propias: solo usa la biblioteca estándar.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "monthly"

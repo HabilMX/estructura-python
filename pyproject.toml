@@ -1,0 +1,54 @@
+# Todo el proyecto descrito en un solo archivo: cómo se construye, qué es, qué
+# comando crea y con qué herramientas se revisa. No hay setup.py ni
+# requirements.txt: este archivo los reemplaza a los dos.
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "revisor"
+version = "0.1.0"
+description = "Revisa si una lista de servicios responde por HTTP"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = []  # solo la biblioteca estándar
+
+[project.scripts]
+revisor = "revisor.cli:main"
+
+# Las herramientas de desarrollo. No viajan con el paquete: quien lo instale no
+# las recibe. Se instalan con `python -m pip install --group dev` (pip 25.1 o
+# más nuevo).
+[dependency-groups]
+dev = [
+  "pytest==9.1.1",
+  "ruff==0.17.1",
+  "mypy==2.4.0",
+]
+
+# 🔑 LA LÍNEA QUE DECIDE QUÉ VIAJA. La rueda (el archivo .whl que se instala)
+# lleva el paquete src/revisor y nada más. Un archivo en src/ que no esté dentro
+# de revisor/ se queda fuera, aunque las pruebas lo encuentren en tu carpeta.
+# herramientas/probar-frontera.sh lo demuestra en cada cambio.
+[tool.hatch.build.targets.wheel]
+packages = ["src/revisor"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# importlib: pytest no mete carpetas del proyecto en sys.path para importar las
+# pruebas, así que lo que se prueba es lo que está instalado en el entorno.
+addopts = ["--import-mode=importlib", "-ra", "--strict-markers"]
+
+[tool.ruff]
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src", "tests"]
+mypy_path = "src"

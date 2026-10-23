@@ -1,0 +1,18 @@
+# La lista de ejemplo que usa «Córrelo». Cada [[servicios]] es un servicio.
+# timeout va en segundos y es opcional (por omisión, 2).
+
+[[servicios]]
+nombre = "python.org"
+url = "https://www.python.org"
+timeout = 5
+
+[[servicios]]
+nombre = "docs.python.org"
+url = "https://docs.python.org/3/"
+timeout = 5
+
+# .invalid es un dominio reservado que nunca existe: este servicio siempre
+# sale CAIDO, para que veas cómo se ve uno.
+[[servicios]]
+nombre = "no-existe"
+url = "http://servicio-que-no-existe.invalid"
