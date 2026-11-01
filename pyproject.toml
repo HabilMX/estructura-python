@@ -25,7 +25,7 @@ revisor = "revisor.cli:main"
 dev = [
   "pytest==9.1.1",
   "ruff==0.17.1",
-  "mypy==2.4.0",
+  "mypy==2.4.1",
 ]
 
 # 🔑 LA LÍNEA QUE DECIDE QUÉ VIAJA. La rueda (el archivo .whl que se instala)
