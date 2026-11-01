@@ -23,7 +23,7 @@ revisor = "revisor.cli:main"
 # más nuevo).
 [dependency-groups]
 dev = [
-  "pytest==9.1.1",
+  "pytest==9.2.0",
   "ruff==0.17.1",
   "mypy==2.4.0",
 ]
